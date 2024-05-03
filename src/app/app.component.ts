@@ -34,7 +34,7 @@ export class AppComponent implements AfterViewInit{
       if(!countryId || countryId === 'null') { return; }
 
       country.addEventListener('mouseover', (event) => this.onMouseOver(event));
-      country.addEventListener('mouseout', (event) => this.onMouseOut(event));
+      country.addEventListener('mouseleave', (event) => this.onMouseLeave(event));
       country.addEventListener('click', (event) => this.onClick(event));
     }))
   }
@@ -45,11 +45,12 @@ export class AppComponent implements AfterViewInit{
     const url = `https://api.worldbank.org/V2/country/${countryId}?format=json`;
 
     this.http.get<any[]>(url).subscribe((Response) => {if (Response) {this.focusCountryName = Response[1][0].name}});
-    console.log(Response)
   }
 
-  onMouseOut(event: MouseEvent) {
-    this.focusCountryName = '';
+  onMouseLeave(event: MouseEvent) {
+    if (event.type == 'mouseleave') {
+      setTimeout(() => {this.countryResponseInfo = ''; this.focusCountryName = '';}, 4000)
+    }
    }
 
   onClick(event: MouseEvent) {

@@ -1,5 +1,6 @@
 <div id="interactive-world-map-wrapper"> 
   <div id="interactive-world-map-container">
+    <div class="nameplate" *ngIf="focusCountryName">{{ focusCountryName}}</div>
     <div #interactiveWorldMap> 
       <!-- {
         "AF": "Afghanistan", 
@@ -1123,21 +1124,17 @@
       </svg>
     </div>
   </div>
-  <div id="country-details">
+  <div id="country-Info">
     <div *ngIf="countryResponseInfo">
       <h2>Country Information</h2>
       <p><strong>Country Name:</strong> {{ countryResponseInfo.name }}</p>
-      <p><strong>Country Capital:</strong> {{ countryResponseInfo.capitalCity }}</p>
-      <p><strong>Country Region:</strong> {{ countryResponseInfo.region.value }}</p>
+      <p><strong>Capital City:</strong> {{ countryResponseInfo.capitalCity }}</p>
+      <p><strong>Region:</strong> {{ countryResponseInfo.region.value }}</p>
       <p><strong>Income Level:</strong> {{ countryResponseInfo.incomeLevel.value }}</p>
       <p><strong>Lending Type:</strong> {{ countryResponseInfo.lendingType.value }}</p>
       <p><strong>Latitude and Longitude:</strong> {{ countryResponseInfo.latitude }} x {{ countryResponseInfo.longitude }} </p>
     </div>
-    <div *ngIf="!countryResponseInfo">
-      <p>No country selected</p>
-    </div>
   </div>
-
 </div>
 
 
