@@ -48,9 +48,8 @@ export class AppComponent implements AfterViewInit{
   }
 
   onMouseLeave(event: MouseEvent) {
-    if (event.type == 'mouseleave') {
-      setTimeout(() => {this.countryResponseInfo = ''; this.focusCountryName = '';}, 4000)
-    }
+    this.countryResponseInfo = null; 
+    this.focusCountryName = null;
    }
 
   onClick(event: MouseEvent) {
